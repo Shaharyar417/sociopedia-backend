@@ -10,6 +10,7 @@ export const register = async (req, res) => {
       lastName,
       email,
       password,
+      picturePath,
       friends,
       location,
       occupation,
@@ -23,17 +24,17 @@ export const register = async (req, res) => {
       lastName,
       email,
       password: passwordHash,
+      picturePath,
       friends,
       location,
       occupation,
-      viewedProfile: Math.floor(Math.random() * 1000),
-      impressions: Math.floor(Math.random() * 1000),
+      viewedProfile: Math.floor(Math.random() * 10000),
+      impressions: Math.floor(Math.random() * 10000),
     });
-
     const savedUser = await newUser.save();
     res.status(201).json(savedUser);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 };
 
